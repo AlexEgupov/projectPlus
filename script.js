@@ -29,7 +29,12 @@ switch (lang) {
 }
 
 //Вывод через массив
-lang === 'en' ? alert(daysArr[0]) : alert(daysArr[1]);
+let map = new Map();
+
+map.set('en', daysArr[0])
+    .set('ru', daysArr[1]);
+
+alert(map.get(lang));
 
 //Задача с namePerson
 const namePerson = prompt('Введите свое имя', 'Артем').toLowerCase();
