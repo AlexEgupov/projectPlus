@@ -10,18 +10,18 @@ const daysArr = [
 
 //Вывод через if
 if (lang === 'en') {
-    alert('Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday');
+    alert(daysArr[0]);
 } else {
-    alert('Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье');
+    alert(daysArr[1]);
 }
 
 //Вывод через switch
 switch (lang) {
     case 'en':
-        alert('Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday');
+        alert(daysArr[0]);
         break;
     case 'ru':
-        alert('Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье');
+        alert(daysArr[1]);
         break;
     default:
         console.log('Что то сломалось');
