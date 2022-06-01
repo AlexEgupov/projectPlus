@@ -1,14 +1,12 @@
 'use strict';
 
-let arr = [11, 22, 33, 44, 55, 66, 77];
+let arr = ['222', '22', '2', '4444', '524', '64', '72'];
 
-for (let i = 0; i < arr.length; i++) {
-    if (20 <= arr[i] && arr[i] <= 29) {
-        console.log(arr[i]);
-    } else if (40 <= arr[i] && arr[i] <= 49) {
-        console.log(arr[i]);
+arr.forEach((item) => {
+    if (item.startsWith('2') || item.startsWith('4')) {
+        console.log(item);
     }
-};
+});
 
 nextPrime:
 for (let i = 2; i < 100; i++) {
