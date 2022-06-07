@@ -13,12 +13,11 @@ const timeAsks = function () {
     const plusZero = document.getElementById('zero');
 
     function taskA() {
-        let days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
-        let months = [
-            'Января', 'Февраля', 'Марта',
-            'Апреля', 'Мая', 'Июня',
-            'Июля', 'Августа', 'Сентября',
-            'Октября', 'Ноября', 'Декабря'];
+        let daysCut = date.toLocaleString('ru', { weekday: 'long' });
+        let days = daysCut[0].toUpperCase() + daysCut.substring(1).toLowerCase();
+        let monthCut = date.toLocaleString('ru', { month: 'long' });
+        let months = monthCut.substring(0, monthCut.length - 1) + 'я';
+        //let marchAugust = monthCut.substring + 'а';
 
         const numWord = (value, words) => {
             const lastNum = value % 10;
@@ -40,7 +39,7 @@ const timeAsks = function () {
         let minutesWord = numWord(date.getMinutes(), ['минута', 'минуты', 'минут']);
         let secondsWord = numWord(date.getSeconds(), ['секунда', 'секунды', 'секунд']);
 
-        plusWords.textContent = 'Сегодня ' + days[dayIndex] + ', ' + day + ' ' + months[month] + ' ' +
+        plusWords.textContent = 'Сегодня ' + days + ', ' + day + ' ' + months + ' ' +
             year + ' года, ' + hour + ' ' + hoursWord + ' ' + minute +
             ' ' + minutesWord + ' ' + second + ' ' + secondsWord;
 
