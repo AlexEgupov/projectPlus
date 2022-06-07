@@ -1,30 +1,67 @@
 'use strict';
+let interval;
+const timeAsks = function () {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const dayIndex = date.getDay();
+    const day = date.getDate();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let second = date.getSeconds();
+    const plusWords = document.getElementById('words');
+    const plusZero = document.getElementById('zero');
 
-const date = new Date();
-let week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
-let str = '';
-let ital = '';
-let today = '';
+    function taskA() {
+        let days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+        let months = [
+            'Января', 'Февраля', 'Марта',
+            'Апреля', 'Мая', 'Июня',
+            'Июля', 'Августа', 'Сентября',
+            'Октября', 'Ноября', 'Декабря'];
 
-let checkFont = function (font) {
-    week.forEach(function (item, index) {
-        if (font === 'str') {
-            str += item + '<br>';
-        } else if (font === 'ital') {
-            ital += ' ' + `<i>${item}</i>` + ' ' + '<br>';
-        } else if (font === 'today') {
-            if (date.getDay() == index + 1) {
-                today += ' ' + `<b>${item}</b>` + ' ' + '<br>';
-            } else { today += item + '<br>' }
-        }
-    });
+        const numWord = (value, words) => {
+            const lastNum = value % 10;
+
+            if (value > 10 & value < 20) {
+                return words[2];
+            }
+            else if (lastNum > 1 && lastNum < 5) {
+                return words[1];
+            }
+            else if (lastNum === 1) {
+                return words[0];
+            }
+
+            return words[2];
+        };
+
+        let hoursWord = numWord(date.getHours(), ['час', 'часа', 'часов']);
+        let minutesWord = numWord(date.getMinutes(), ['минута', 'минуты', 'минут']);
+        let secondsWord = numWord(date.getSeconds(), ['секунда', 'секунды', 'секунд']);
+
+        plusWords.textContent = 'Сегодня ' + days[dayIndex] + ', ' + day + ' ' + months[month] + ' ' +
+            year + ' года, ' + hour + ' ' + hoursWord + ' ' + minute +
+            ' ' + minutesWord + ' ' + second + ' ' + secondsWord;
+
+
+    }
+
+    function zeroPlus(item) {
+        let num = item < 10 ? '0' + item : item;
+        return num;
+    }
+
+    function taskB() {
+        plusZero.textContent = zeroPlus(day) + ':' + zeroPlus(month) + ':' + year + ' ' +
+            zeroPlus(hour) + ':' + zeroPlus(minute) + ':' + zeroPlus(second);
+
+    }
+
+    taskA();
+    taskB();
+
 };
 
-checkFont('str');
-checkFont('ital');
-checkFont('today');
-
-raw.innerHTML = week;
-column.innerHTML = str;
-italic.innerHTML = ital;
-todayBold.innerHTML = today;
+timeAsks();
+interval = setInterval(timeAsks, 500);
