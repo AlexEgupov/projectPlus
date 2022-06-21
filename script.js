@@ -8,7 +8,7 @@ const timeAsks = function () {
     let hour = date.getHours();
     let minute = date.getMinutes();
     let second = date.getSeconds();
-    // const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    // let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const plusWords = document.getElementById('words');
     const plusZero = document.getElementById('zero');
 
@@ -39,7 +39,7 @@ const timeAsks = function () {
         let minutesWord = numWord(date.getMinutes(), ['минута', 'минуты', 'минут']);
         let secondsWord = numWord(date.getSeconds(), ['секунда', 'секунды', 'секунд']);
 
-        plusWords.textContent = `Сегодня ${days}, ${day} ${months} ${year} года, 
+        plusWords.textContent = `Сегодня ${days}, ${day} ${months} ${year} года,
         ${hour} ${hoursWord} ${minute} ${minutesWord} ${second} ${secondsWord}`;
 
     }
@@ -51,7 +51,7 @@ const timeAsks = function () {
 
     function taskB() {
         plusZero.textContent = `${zeroPlus(day)}:${zeroPlus(month)}:${year} 
-        ${zeroPlus(hour)}:${zeroPlus(minute)}:${zeroPlus(second)}`;
+        ${zeroPlus(hour)}:${zeroPlus(minute)}:${zeroPlus(second)} `;
 
     }
 
